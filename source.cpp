@@ -36,62 +36,18 @@ void print_text(int x, int y, int color, wstring mess, bool clreol = true)
     wcout << mess;
 }
 
-void print_loop(int x, int y, int type_arr)
+void print_loop(int x, int y)
 {
-    int row, column;
-	switch (type_arr)
+    for(int i = 0; i < 12; i++)
     {
-        case 1:
-            row = 12;
-            column = 15;
-            break;
-	    case 2:
-		case 4:
-		    row = 5;
-            column = 6;
-            break;
-	    case 3:
-		    row = 6;
-            column = 7;
-            break;
-        default:
-            break;
-    }
-    for(int ii = 0; ii < 12; ii++)
-    {
-        for(int jj = 0; jj < 25; jj++)
+        for(int j = 0; j < 25; j++)
         {
-            Sleep(100);
-            goto_xy(jj + x, ii + y, false);
-            switch (type_arr)
-            {
-                case 1:
-				    if(heart[ii][jj])
-                        wcout << L"*";
-				    else
-                        wcout << L" ";
-                    break;
-			    case 2:
-				    if(i[ii][jj])
-                        wcout << L"*";
-				    else
-                        wcout << L" ";
-                    break;
-			    case 3:
-				    if(l[ii][jj])
-                        wcout << L"*";
-				    else
-                        wcout << L" ";
-                    break;
-			    case 4:
-				    if(u[ii][jj])
-                        wcout << L"*";
-				    else
-                        wcout << L" ";
-                    break;
-                default:
-                    break;
-            }
+            Sleep(10);
+            goto_xy(j + x, i + y, false);
+            if(heart[i][j])
+                wcout << L"*";
+            else
+                wcout << L" ";
         }
         wcout << endl;
     }
@@ -100,19 +56,36 @@ void print_loop(int x, int y, int type_arr)
 void print_heart()
 {
     int index = 0;
+	const int y = 8, color = 12;
+    const bool clreol = false;
     while (true)
     {
         text_color(index % 14 + 1);
         if (index == 0 || index % 2 == 0)
         {
-            print_loop(30, 5, 1);
-            print_loop(55, 5, 1);
-            print_loop(80, 5, 1);
+            print_loop(30, 5);
+            print_loop(55, 5);
+            print_loop(80, 5);
         }
 
-        print_loop(38, 8, 2);
-        print_loop(61, 8, 3);
-		print_loop(87, 8, 4);
+        print_text(38, y + 0, color, L"1 1 1 1 1 1", clreol);
+		print_text(38, y + 1, color, L"    1 1    ", clreol);
+		print_text(38, y + 2, color, L"    1 1    ", clreol);
+		print_text(38, y + 3, color, L"    1 1    ", clreol);
+		print_text(38, y + 4, color, L"1 1 1 1 1 1", clreol);
+
+		print_text(61, y + 0, color, L"  1 1   1 1  ", clreol);
+		print_text(61, y + 1, color, L"1 1 1 1 1 1 1", clreol);
+		print_text(61, y + 2, color, L"1 1 1 1 1 1 1", clreol);
+		print_text(61, y + 3, color, L"  1 1 1 1 1  ", clreol);
+		print_text(61, y + 4, color, L"    1 1 1    ", clreol);
+		print_text(61, y + 5, color, L"      1      ", clreol);
+
+		print_text(87, y + 0, color, L"1 1     1 1", clreol);
+		print_text(87, y + 1, color, L"1 1     1 1", clreol);
+		print_text(87, y + 2, color, L"1 1     1 1", clreol);
+		print_text(87, y + 3, color, L"1 1 1 1 1 1", clreol);
+		print_text(87, y + 4, color, L" 1 1 1 1 1 ", clreol);
         index++;
     }
 }
