@@ -8,13 +8,12 @@
 using namespace std;
 #define MAX 100
 
-void goto_xy(int x, int y, bool clreol);
-void goto_xy(int x, int y, int text_size);
 void text_color(int color);
-void resize_Console(int width, int height);
 void print_heart(int index);
+void print_loop(int x, int y);
+void goto_xy(int x, int y, bool clreol);
+void resize_Console(int width, int height);
 void print_text(int x, int y, int color, wstring mess, bool clreol);
-void print_loop(int x, int y, const int arr[][MAX]);
 
 const int heart[12][25] = {
     {0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
@@ -29,25 +28,6 @@ const int heart[12][25] = {
     {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-}, i[5][6] = {
-    {1, 1, 1, 1, 1, 1},
-    {0, 0, 1, 1, 0, 0},
-    {0, 0, 1, 1, 0, 0},
-    {0, 0, 1, 1, 0, 0},
-    {1, 1, 1, 1, 1, 1}
-}, l[6][7] = {
-    {0, 1, 1, 0, 1, 1, 0},
-    {1, 1, 1, 1, 1, 1, 1},
-    {1, 1, 1, 1, 1, 1, 1},
-    {0, 1, 1, 1, 1, 1, 0},
-    {0, 0, 1, 1, 1, 0, 0},
-    {0, 0, 0, 1, 0, 0, 0}
-}, u[5][6] = {
-    {1, 1, 0, 0, 1, 1},
-    {1, 1, 0, 0, 1, 1},
-    {1, 1, 0, 0, 1, 1},
-    {1, 1, 0, 0, 1, 1},
-    {0, 1, 1, 1, 1, 0}
 }, mgs[13] = {1, 2, 1, 2, 3, 3, 2, 3, 2, 2, 3, 2, 3};
 
 const wstring message[100] = {
