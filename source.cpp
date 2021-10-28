@@ -135,7 +135,7 @@ int main()
    	begin(loading[load++]);
     print_text(10, 9, 15, message[mess++]);
     Sleep(3000);
-    while (load < 14)
+    while (load < size(loading))
     {
         print_text(58, 6, 13, loading[load++], false);
 		print_text(10, 9, 15, message[mess++]);
